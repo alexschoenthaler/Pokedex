@@ -1,14 +1,16 @@
 const BASE_URL = "https://pokeapi.co/api/v2/";
-let path = "pokemon?limit=30&offset=0";
 let content = document.getElementById('content');
+let pokemonsDetail = [];
+
 async function init() {
-    await ShowPokemons();
+    await renderPokemons();
+    // console.log(pokemonsDetail);
 }
 
-async function GetPokemons() {
+async function GetPokemons(path) {
 
    try {
-    let response = await fetch(BASE_URL + path +'.json');
+    let response = await fetch(path);
     let responseAsJson = await response.json();
     return responseAsJson;
     
@@ -18,16 +20,26 @@ async function GetPokemons() {
     
 }
 
-async function ShowPokemons() {
- let responseAsJson  = await GetPokemons();
+async function renderPokemons() {
+ let responseAsJson  = await GetPokemons("https://pokeapi.co/api/v2/pokemon?limit=31&offset=0");
  let pokemons = responseAsJson.results;
- let pokemonID = -2;
  
-    for (let index = 0; index < pokemons.length; index+=3) {
-        
-        console.log(pokemons[index].name);
-        pokemonID+=3;
-        content.innerHTML += pokemonCard(pokemons[index].name, pokemonID);
+    for (let pokemonIndex = 0; pokemonIndex < pokemons.length; pokemonIndex++) {    
+       
+        pokemonsDetail.push(await GetPokemons(pokemons[pokemonIndex].url));
+        let pokemonType = GetPokemonTypes(pokemonIndex);
+        content.innerHTML += pokemonCard(pokemons[pokemonIndex].name, pokemonIndex, pokemonType[0].firstType, pokemonType[0].secondType);
     }
     
+}
+
+function GetPokemonTypes(pokemonIndex) {
+    let pokemonTypes = []
+    let pokemonFirstType = pokemonsDetail[pokemonIndex].types[0].type.name;
+    let pokemonSecondType = pokemonsDetail[pokemonIndex].types[1] === undefined ? "" : pokemonsDetail[pokemonIndex].types[1].type.name;
+    pokemonTypes.push({
+        firstType:pokemonFirstType,
+        secondType:pokemonSecondType
+    })
+    return pokemonTypes;
 }
