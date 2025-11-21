@@ -1,38 +1,20 @@
 
 /* Individual type background colors */
-.type-normal   { background-color: #A8A878 !important;}
-.type-fighting{ background-color: #C03028 !important; }
-.type-flying  { background-color: #A890F0 !important; }
-.type-poison  { background-color: #A040A0 !important; }
-.type-ground  { background-color: #E0C068 !important; }
-.type-rock    { background-color: #B8A038 !important; }
-.type-bug     { background-color: #A8B820 !important; }
-.type-ghost   { background-color: #705898 !important; }
-.type-steel   { background-color: #B8B8D0 !important; }
-.type-fire    { background-color: #F08030 !important; }
-.type-water   { background-color: #6890F0 !important; }
-.type-grass   { background-color: #78C850 !important; }
-.type-electric{ background-color: #F8D030 !important; }
-.type-psychic { background-color: #F85888 !important; }
-.type-ice     { background-color: #98D8D8 !important; }
-.type-dragon  { background-color: #7038F8 !important; }
-.type-dark    { background-color: #705848 !important; }
-
-/* Individual type background images with img suffix */
-.type-normal-img   { background: url('../assets/img/PokemonTypes/normal.png'); }
-.type-fighting-img { background: url('../assets/img/PokemonTypes/fighting.png'); }
-.type-flying-img   { background: url('../assets/img/PokemonTypes/flying.png'); }
-.type-poison-img   { background: url('../assets/img/PokemonTypes/poison.png'); }
-.type-ground-img   { background: url('../assets/img/PokemonTypes/ground.png'); }
-.type-rock-img     { background: url('../assets/img/PokemonTypes/rock.png'); }
-.type-bug-img      { background: url('../assets/img/PokemonTypes/bug.png'); }
-.type-ghost-img    { background: url('../assets/img/PokemonTypes/ghost.png'); }
-.type-steel-img    { background: url('../assets/img/PokemonTypes/steel.png'); }
-.type-fire-img     { background: url('../assets/img/PokemonTypes/fire.png'); }
-.type-water-img    { background: url('../assets/img/PokemonTypes/water.png'); }
-.type-grass-img    { background: url('../assets/img/PokemonTypes/grass.png'); }
-.type-electric-img { background: url('../assets/img/PokemonTypes/electric.png'); }
-.type-psychic-img  { background: url('../assets/img/PokemonTypes/psychic.png'); }
-.type-ice-img      { background: url('../assets/img/PokemonTypes/ice.png'); }
-.type-dragon-img   { background: url('../assets/img/PokemonTypes/dragon.png'); }
-.type-dark-img     { background: url('../assets/img/PokemonTypes/dark.png'); }
+.type-normal   { background-color: rgba(168, 168, 120, 0.5) !important;}
+.type-fighting{ background-color: rgba(192, 48, 40, 0.5) !important; }
+.type-flying  { background-color: rgba(168, 144, 240, 0.5) !important; }
+.type-poison  { background-color: rgba(160, 64, 160, 0.5) !important; }
+.type-ground  { background-color: rgba(224, 192, 104, 0.5) !important; }
+.type-rock    { background-color: rgba(184, 160, 56, 0.5) !important; }
+.type-bug     { background-color: rgba(168, 184, 32, 0.5) !important; }
+.type-ghost   { background-color: rgba(112, 88, 152, 0.5) !important; }
+.type-steel   { background-color: rgba(184, 184, 208, 0.5) !important; }
+.type-fire    { background-color: rgba(240, 128, 48, 0.5) !important; }
+.type-water   { background-color: rgba(104, 144, 240, 0.5) !important; }
+.type-grass   { background-color: rgba(120, 200, 80, 0.5) !important; }
+.type-electric{ background-color: rgba(248, 208, 48, 0.5) !important; }
+.type-psychic { background-color: rgba(248, 88, 136, 0.5) !important; }
+.type-ice     { background-color: rgba(152, 216, 216, 0.5) !important; }
+.type-dragon  { background-color: rgba(112, 56, 248, 0.5) !important; }
+.type-dark    { background-color: rgba(112, 88, 72, 0.5) !important; }
+.type-fairy    {background-color: rgba(112, 72, 89, 0.5) !important;}

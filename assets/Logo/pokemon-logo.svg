@@ -1,0 +1,37 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @keyframes gentlePulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.9; }
+      }
+      .main-ball {
+        animation: gentlePulse 3s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+  
+  
+  <!-- Main Pokéball with Modern Twist -->
+  <g class="main-ball">
+    <!-- Outer circle -->
+    <circle cx="50" cy="50" r="42" fill="none" stroke="#1a1a1a" stroke-width="1.8"/>
+    
+    <!-- Top half - Dark -->
+    <path d="M 8 50 A 42 42 0 0 1 92 50" fill="#1a1a1a"/>
+    
+    <!-- Bottom half - Light -->
+    <path d="M 8 50 A 42 42 0 0 0 92 50" fill="#ffffff"/>
+    
+    <!-- Horizontal dividing line -->
+    <line x1="8" y1="50" x2="92" y2="50" stroke="#1a1a1a" stroke-width="1.8"/>
+    
+    <!-- Center circle -->
+    <circle cx="50" cy="50" r="16" fill="#ffffff" stroke="#1a1a1a" stroke-width="1.8"/>
+    <circle cx="50" cy="50" r="12" fill="#f5f5f5"/>
+    
+    <!-- Inner core with geometric accent -->
+    <circle cx="50" cy="50" r="7" fill="#1a1a1a"/>
+    <path d="M 47 47 L 53 50 L 47 53 Z" fill="#ffffff" opacity="0.4"/>
+  </g>
+</svg>

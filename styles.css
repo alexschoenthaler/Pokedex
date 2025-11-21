@@ -12,6 +12,11 @@ main{
     color: white;
 }
 
+.externaldistance{
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
 .content{
     padding-top: 20px;
     display: flex;
@@ -36,4 +41,8 @@ main{
     width: 100px;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.logo{
+    height: 50px;
 }
