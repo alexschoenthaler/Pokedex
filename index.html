@@ -7,7 +7,10 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./styles/pokemonType.css">
+    <link rel="stylesheet" href="./styles/hoverCard.css">
     <link rel="icon" type="image/x-icon" href="./assets/Logo/pokemon-1673770_640.png">
+
+    <!-- bootstrep -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -17,18 +20,21 @@
     <header>
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
-                <img class="logo" src="./assets/Logo/pokemon-logo.svg" alt="">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button onclick="" class="btn btn-outline-success" type="submit">Search</button>
+                <img class="logo" src="./assets/Logo/pokemon-logo.svg" alt="Logo">
+                <form id="pokemonSearch" class="d-flex" role="search">
+                    <input id="inputSearch" class="form-control me-2" type="search" placeholder="Search"
+                        aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </nav>
     </header>
     <main>
-    <div id="content" class="content externaldistance">
-    </div>
-    <button onclick="LoadMorePokemons()">Mehr Pokemons Laden</button>
+        <div id="content" class="content externaldistance">
+        </div>
+        <div id="buttonContainer">
+        <button onclick="LoadMorePokemons()">Mehr Pokemons Laden</button>
+        </div>
     </main>
 </body>
 <script src="./scripts/CardTamplate.js"></script>
