@@ -10,6 +10,7 @@ let addedNewPokemons = 31;
 
 async function init() {
     await StartPokemons();
+    console.log(pokemonsNames, pokemonsIDs);
 }
 
 async function GetPokemons(path) {
@@ -91,7 +92,7 @@ function SearchPokemons() {
             RenderSearchedPokemons(pokemonsNames[searchIndex], pokemonsIDs[searchIndex] -1);
         };
         } 
-    }
+}
  
 function emtyingSiteContent() {
     let refButtonContainer = document.getElementById("buttonContainer");

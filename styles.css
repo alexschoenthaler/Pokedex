@@ -1,7 +1,16 @@
 
+html{
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+
 body{
     margin: 0;
     padding: 0;
+
+    &:has(dialog[open]) {
+    overflow: hidden;
+  }
 }
 
 main{
