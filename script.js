@@ -4,13 +4,13 @@ let refpokemonSearch = document.getElementById('pokemonSearch');
 let pokemonsDetail = [];
 let pokemonsIDs = [];
 let pokemonsNames = [];
+let pokemonImg = [];
 let pokemonIndex = 30;
 let addedNewPokemons = 31;
 
 
 async function init() {
     await StartPokemons();
-    console.log(pokemonsNames, pokemonsIDs);
 }
 
 async function GetPokemons(path) {
@@ -29,7 +29,7 @@ async function StartPokemons() {
     let responseAsJson = await GetPokemons("https://pokeapi.co/api/v2/pokemon?limit=31&offset=0");
     let pokemons = responseAsJson.results;
     let pokemonindex = -1;
-    renderPokemons(pokemons, pokemonindex);
+    await renderPokemons(pokemons, pokemonindex);
 }
 
 async function renderPokemons(pokemons, pokemonindex) {
@@ -38,9 +38,16 @@ async function renderPokemons(pokemons, pokemonindex) {
         pokemonsDetail.push(await GetPokemons(pokemons[index].url));
         let pokemonType = GetPokemonTypes(pokemonindex);
         let pokemonName = capitalizeFirstLetter(pokemons[index].name);
+        await getPokemonImg(pokemonindex);
         content.innerHTML += pokemonCard(pokemonName, pokemonindex, pokemonType[0].firstType, pokemonType[0].secondType);
     }
     GetPokemonSearchData();
+}
+
+async function getPokemonImg(pokemonindex) {
+        let refImg = await fetch(`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemonindex +1}.svg`);
+        let refImgTxt = await refImg.text();
+        pokemonImg.push(refImgTxt.substring(0, 44)+'class= "pokemonImg" '+ refImgTxt.substring(44, refImgTxt.length));
 }
 
 function GetPokemonTypes(index) {
@@ -64,13 +71,14 @@ function GetPokemonTypes(index) {
 async function LoadMorePokemons() {
     let responseAsJson = await GetPokemons(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${addedNewPokemons}`);
     let pokemons = responseAsJson.results;
-    renderPokemons(pokemons, pokemonIndex);
+    await renderPokemons(pokemons, pokemonIndex);
     addedNewPokemons += 20;
     pokemonIndex += 20;
-    console.log(pokemonsDetail, pokemonsIDs);
 }
 
 function GetPokemonSearchData() {
+    pokemonsIDs = [];
+    pokemonsNames = [];
     pokemonsDetail.forEach(element => {
         pokemonsIDs.push(element.id);
         pokemonsNames.push(element.name);
