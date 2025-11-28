@@ -3,8 +3,7 @@ function opendialog(ID) {
     const refdialog = document.getElementById(ID);
     refdialog.showModal();
     refdialog.classList.remove('closed');
-    refdialog.classList.add('opend');
-    showDialogContent();    
+    refdialog.classList.add('opend');   
 }
 
 /**Close the Dialog with animation */
@@ -17,8 +16,8 @@ function closedialog(ID) {
     },200)    
 }
 
-function showDialogContent() {
-//    let refcardDetails = document.getElementById('cardDetails');
-//    refcardDetails.innerHTML = pokemonDialog(pokemonName, pokemonNumber);
+function showDialogContent(pokemonNumber) {
+    let refcardDetails = document.getElementById('cardDetails');
+    refcardDetails.innerHTML = pokemonDialog(pokemonNumber);
     
 }

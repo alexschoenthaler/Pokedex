@@ -4,13 +4,14 @@ let refpokemonSearch = document.getElementById('pokemonSearch');
 let pokemonsDetail = [];
 let pokemonsIDs = [];
 let pokemonsNames = [];
-let pokemonImg = [];
+let pokemonImges = [];
 let pokemonIndex = 30;
 let addedNewPokemons = 31;
 
 
 async function init() {
     await StartPokemons();
+    console.log(pokemonsDetail);
 }
 
 async function GetPokemons(path) {
@@ -47,7 +48,7 @@ async function renderPokemons(pokemons, pokemonindex) {
 async function getPokemonImg(pokemonindex) {
         let refImg = await fetch(`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemonindex +1}.svg`);
         let refImgTxt = await refImg.text();
-        pokemonImg.push(refImgTxt.substring(0, 44)+'class= "pokemonImg" '+ refImgTxt.substring(44, refImgTxt.length));
+        pokemonImges.push(refImgTxt.substring(0, 44)+'class= "pokemonImg" '+ refImgTxt.substring(44, refImgTxt.length));
 }
 
 function GetPokemonTypes(index) {
