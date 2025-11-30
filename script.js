@@ -59,7 +59,7 @@ function GetPokemonTypes(index) {
         case undefined:
             break;
         default:
-            pokemonSecondType = `../assets/img/PokemonTypes/${pokemonsDetail[index].types[1].type.name}.png`;
+            pokemonSecondType = `./assets/img/PokemonTypes/${pokemonsDetail[index].types[1].type.name}.png`;
             break;
     }
     pokemonTypes.push({
@@ -82,7 +82,7 @@ function GetPokemonSearchData() {
     pokemonsNames = [];
     pokemonsDetail.forEach(element => {
         pokemonsIDs.push(element.id);
-        pokemonsNames.push(element.name);
+        pokemonsNames.push(capitalizeFirstLetter(element.name));
     });
 }
 

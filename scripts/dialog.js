@@ -16,8 +16,26 @@ function closedialog(ID) {
     },200)    
 }
 
-function showDialogContent(pokemonNumber) {
+function showDialogContent(tamplate) {
     let refcardDetails = document.getElementById('cardDetails');
-    refcardDetails.innerHTML = pokemonDialog(pokemonNumber);
+    refcardDetails.innerHTML ="";
+    refcardDetails.innerHTML = tamplate;
     
 }
+
+function getDialogAbylities(pokemonNumber){
+    let abylities = [];
+    pokemonsDetail[pokemonNumber].abilities.forEach(element => {
+        abylities.push(element.ability.name)
+    });
+    return abylities;  
+}
+
+function getDialogTypes(pokemonNumber){
+    let types = [];
+    pokemonsDetail[pokemonNumber].types.forEach(element => {
+        types.push(element.type.name)
+    });
+    return types;  
+}
+

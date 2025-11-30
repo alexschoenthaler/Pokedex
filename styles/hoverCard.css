@@ -23,9 +23,10 @@
 }
 
 .holographic-card:hover {
-  transform: scale(1.05);
   box-shadow: 0 0 20px rgba(0,255,255,0.5);
   cursor: pointer;
+  /* transform: scale(1.05); */
+
 }
 
 .holographic-card:hover::before {
@@ -33,3 +34,4 @@
   transform: rotate(-45deg) translateY(100%);  /* translateY =  moves the element along the y-axis  */
 
 }
+
