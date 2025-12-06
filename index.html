@@ -20,32 +20,38 @@
 
 <body onload="init()" id="myBody">
     <header>
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <img class="logo" src="./assets/Logo/Logo.png" alt="Logo">
-                <div>
-                    <span id="MessageErr"></span>
-                    <form id="pokemonSearch" class="d-flex" role="search">
-                        <input id="inputSearch" class="form-control me-2" type="search" placeholder="Search"
-                            aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+        
+            <nav class="navbar bg-body-tertiary">
+
+                <div class="container-fluid contentlimitation">
+                    <img class="logo" src="./assets/Logo/Logo.png" alt="Logo">
+                    <div>
+                        <span id="MessageErr"></span>
+                        <form id="pokemonSearch" class="d-flex" role="search">
+                            <input id="inputSearch" class="form-control me-2" type="search" placeholder="Search"
+                                aria-label="Search" />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+       
     </header>
     <main>
-        <section class ="overlay displayNone" id="overlay"></section>
-        <section id="content" class="content externaldistance">
-        </section>
-        <section id="buttonContainer" class="buttonContainer">
-            <button class="btn btn-outline-success" onclick="LoadMorePokemons(), startLoadingSpinner()">More Pokemons</button>
-        </section>
+        <div class="contentlimitation">
+            <section class="overlay displayNone" id="overlay"></section>
+            <section id="content" class="content externaldistance">
+            </section>
+            <section id="buttonContainer" class="buttonContainer">
+                <button class="btn btn-outline-success" onclick="LoadMorePokemons(), startLoadingSpinner()">More
+                    Pokemons</button>
+            </section>
+        </div>
         <dialog id="cardDetails" onclick="closedialog('cardDetails')">
         </dialog>
     </main>
     <footer>
-         <p>Created by @Alex Schönthaler</p>
+        <p>Created by @Alex Schönthaler</p>
     </footer>
 </body>
 <script src="./scripts/CardTamplate.js"></script>

@@ -1,7 +1,7 @@
 
 let dialogPokemonDescription = [];
 
-/** Open the Dialog with animation*/
+/** Opens the dialog with animation */
 function opendialog(ID) {
     const refdialog = document.getElementById(ID);
     refdialog.showModal();
@@ -9,7 +9,7 @@ function opendialog(ID) {
     refdialog.classList.add('opend');   
 }
 
-/**Close the Dialog with animation */
+/** Closes the dialog with animation */
 function closedialog(ID) {
     const refdialog = document.getElementById(ID);
     refdialog.classList.add('closed');
@@ -19,12 +19,14 @@ function closedialog(ID) {
     },200)    
 }
 
+/** Updates the dialog content with a new template */
 async function showDialogContent(tamplate) {
     let refcardDetails = document.getElementById('cardDetails');
     refcardDetails.innerHTML ="";
     refcardDetails.innerHTML = tamplate;
 }
 
+/** Extracts all abilities of a Pokemon for display */
 function getDialogAbylities(pokemonNumber){
     let abylities = [];
     pokemonsDetail[pokemonNumber].abilities.forEach(element => {
@@ -33,6 +35,7 @@ function getDialogAbylities(pokemonNumber){
     return abylities;  
 }
 
+/** Extracts all types of a Pokemon for dialog display */
 function getDialogTypes(pokemonNumber){
     let types = [];
     pokemonsDetail[pokemonNumber].types.forEach(element => {
@@ -41,6 +44,7 @@ function getDialogTypes(pokemonNumber){
     return types;  
 }
 
+/** Loads the description of a Pokemon from the API */
 async function getDialogDescription(pokemonNumber) {
     dialogPokemonDescription = [];
     let refResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonNumber+1}/`);

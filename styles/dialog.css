@@ -61,11 +61,34 @@ td {
     color: rgb(97, 96, 96);
 }
 
-.arrow:hover{
+.arrow:hover {
     color: black;
     cursor: pointer;
 }
 
-.progress{
+.progress {
     width: 200px;
+}
+
+@media (max-width:490px) {
+
+    .dialogCardDetails {
+        width: 300px;
+    }
+}
+
+@media (max-width:380px) {
+
+    .dialogCardDetails {
+        width: 270px;
+    }
+
+    td {
+        max-width: 250px;
+    }
+
+    .progress {
+        width: 150px;
+    }
+
 }

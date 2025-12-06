@@ -1,3 +1,4 @@
+/** Generates HTML for a Pokemon card */
 function pokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecondType) {
     return `<div class = "card type-${pokemonFirstType} holographic-card" onclick =" opendialog('cardDetails'), showDialogContent(pokemonDialog(${pokemonNumber}))">
             ${pokemonImges[pokemonNumber]}
@@ -7,6 +8,7 @@ function pokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecond
             </div>`
 
 }
+/** Generates HTML for the detail view of a Pokemon in the dialog */
 function pokemonDialog(pokemonNumber) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
@@ -41,6 +43,7 @@ function pokemonDialog(pokemonNumber) {
             </div>`
 }
 
+/** Generates HTML for the stats view of a Pokemon in the dialog */
 function statsDialog(pokemonNumber) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">

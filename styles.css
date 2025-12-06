@@ -12,6 +12,13 @@ body {
     }
 }
 
+
+/* contentlimitation */
+.contentlimitation {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
 header {
     position: sticky !important;
     top: 0;
@@ -24,11 +31,6 @@ main {
     background-size: cover;
     background-attachment: fixed;
     color: white;
-}
-
-.externaldistance {
-    padding-left: 120px;
-    padding-right: 120px;
 }
 
 .content {
@@ -64,7 +66,6 @@ main {
 
 .logo {
     height: 40px;
-    padding-left: 50px;
     animation: floatLogo 3s ease-in-out infinite;
 }
 
@@ -115,7 +116,7 @@ main {
     display: none;
 }
 
-.overFlowHidden{
+.overFlowHidden {
     overflow: hidden;
 }
 
@@ -126,4 +127,39 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media(max-width: 930px) {
+    .externaldistance {
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
+}
+
+@media(max-width: 730px) {
+    .externaldistance {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+}
+
+@media(max-width: 530px) {
+    .externaldistance {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+@media(max-width: 1940px) {
+    .logo {
+        padding-left: 50px;
+    }
+
+    .externaldistance {
+        padding-left: 120px;
+        padding-right: 120px;
+    }
 }
