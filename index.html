@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./styles/pokemonType.css">
     <link rel="stylesheet" href="./styles/hoverCard.css">
+    <link rel="stylesheet" href="./styles/loadingspinner.css">
     <link rel="icon" type="image/x-icon" href="./assets/Logo/pokemon-1673770_640.png">
     <link rel="stylesheet" href="./styles/dialog.css">
 
@@ -22,26 +23,33 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <img class="logo" src="./assets/Logo/Logo.png" alt="Logo">
-                <form id="pokemonSearch" class="d-flex" role="search">
-                    <input id="inputSearch" class="form-control me-2" type="search" placeholder="Search"
-                        aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div>
+                    <span id="MessageErr"></span>
+                    <form id="pokemonSearch" class="d-flex" role="search">
+                        <input id="inputSearch" class="form-control me-2" type="search" placeholder="Search"
+                            aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
         </nav>
     </header>
     <main>
-        <div id="content" class="content externaldistance">
-        </div>
-        <div id="buttonContainer">
-            <button onclick="LoadMorePokemons()">More Pokemons</button>
-        </div>
+        <section class ="overlay displayNone" id="overlay"></section>
+        <section id="content" class="content externaldistance">
+        </section>
+        <section id="buttonContainer" class="buttonContainer">
+            <button class="btn btn-outline-success" onclick="LoadMorePokemons(), startLoadingSpinner()">More Pokemons</button>
+        </section>
         <dialog id="cardDetails" onclick="closedialog('cardDetails')">
         </dialog>
     </main>
+    <footer>
+         <p>Created by @Alex Schönthaler</p>
+    </footer>
 </body>
 <script src="./scripts/CardTamplate.js"></script>
 <script src="./script.js"></script>
 <script src="./scripts/dialog.js"></script>
-
+<script src="./scripts/overlay.js"></script>
 </html>

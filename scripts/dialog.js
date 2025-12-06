@@ -1,3 +1,6 @@
+
+let dialogPokemonDescription = [];
+
 /** Open the Dialog with animation*/
 function opendialog(ID) {
     const refdialog = document.getElementById(ID);
@@ -16,11 +19,10 @@ function closedialog(ID) {
     },200)    
 }
 
-function showDialogContent(tamplate) {
+async function showDialogContent(tamplate) {
     let refcardDetails = document.getElementById('cardDetails');
     refcardDetails.innerHTML ="";
     refcardDetails.innerHTML = tamplate;
-    
 }
 
 function getDialogAbylities(pokemonNumber){
@@ -37,5 +39,13 @@ function getDialogTypes(pokemonNumber){
         types.push(element.type.name)
     });
     return types;  
+}
+
+async function getDialogDescription(pokemonNumber) {
+    dialogPokemonDescription = [];
+    let refResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonNumber+1}/`);
+    let refResponseasJson =  await refResponse.json();
+    let pokemonDescription = refResponseasJson.flavor_text_entries[1].flavor_text;
+    dialogPokemonDescription.push(pokemonDescription);
 }
 

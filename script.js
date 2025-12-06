@@ -1,6 +1,7 @@
 
 let content = document.getElementById('content');
 let refpokemonSearch = document.getElementById('pokemonSearch');
+let refButtonContainer = document.getElementById("buttonContainer");
 let pokemonsDetail = [];
 let pokemonsIDs = [];
 let pokemonsNames = [];
@@ -11,7 +12,6 @@ let addedNewPokemons = 31;
 
 async function init() {
     await StartPokemons();
-    console.log(pokemonsDetail);
 }
 
 async function GetPokemons(path) {
@@ -46,9 +46,9 @@ async function renderPokemons(pokemons, pokemonindex) {
 }
 
 async function getPokemonImg(pokemonindex) {
-        let refImg = await fetch(`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemonindex +1}.svg`);
-        let refImgTxt = await refImg.text();
-        pokemonImges.push(refImgTxt.substring(0, 44)+'class= "pokemonImg" '+ refImgTxt.substring(44, refImgTxt.length));
+    let refImg = await fetch(`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemonindex + 1}.svg`);
+    let refImgTxt = await refImg.text();
+    pokemonImges.push(refImgTxt.substring(0, 44) + 'class= "pokemonImg" ' + refImgTxt.substring(44, refImgTxt.length));
 }
 
 function GetPokemonTypes(index) {
@@ -73,6 +73,7 @@ async function LoadMorePokemons() {
     let responseAsJson = await GetPokemons(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${addedNewPokemons}`);
     let pokemons = responseAsJson.results;
     await renderPokemons(pokemons, pokemonIndex);
+    stopLoadingSpinner();
     addedNewPokemons += 20;
     pokemonIndex += 20;
 }
@@ -93,18 +94,44 @@ refpokemonSearch.addEventListener("submit", e => {
 
 function SearchPokemons() {
     let input = document.getElementById("inputSearch");
-    emtyingSiteContent();
-    let filter = input.value.toUpperCase();
-    for (let searchIndex = 0; searchIndex < pokemonsNames.length; searchIndex++) {
-        let pokemonName = pokemonsNames[searchIndex].toUpperCase();
-        if (pokemonName.indexOf(filter) > -1) {
-            RenderSearchedPokemons(pokemonsNames[searchIndex], pokemonsIDs[searchIndex] -1);
-        };
-        } 
+    let refMessageErr = document.getElementById("MessageErr");
+
+    if (input.value.length >= 3) {
+        refMessageErr.innerHTML = "";
+        emtyingSiteContent();
+        let filter = input.value.toUpperCase();
+        let count = 0;
+        for (let searchIndex = 0; searchIndex < pokemonsNames.length; searchIndex++) {
+            let pokemonName = pokemonsNames[searchIndex].toUpperCase();
+            if (pokemonName.indexOf(filter) > -1) {
+                RenderSearchedPokemons(pokemonsNames[searchIndex], pokemonsIDs[searchIndex] - 1);
+                count++;
+            };
+
+        }
+        if(count == 0){
+            content.innerHTML = 'No Pokemon with this Search found'
+        }
+         
+    } else if (input.value.length == 0) {
+        emtyingSiteContent();
+        refButtonContainer.innerHTML = '<button class="btn btn-outline-success" onclick="LoadMorePokemons()">More Pokemons</button>';
+        pokemonsDetail = [];
+        pokemonsIDs = [];
+        pokemonsNames = [];
+        pokemonImges = [];
+        init();
+       
+    } else {
+        refMessageErr.innerHTML = "min. 3C";
+        setTimeout(() => {
+            refMessageErr.innerHTML = "";
+        }, 3000)
+    }
+
 }
- 
+
 function emtyingSiteContent() {
-    let refButtonContainer = document.getElementById("buttonContainer");
     content.innerHTML = "";
     refButtonContainer.innerHTML = "";
 }

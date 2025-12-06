@@ -1,32 +1,37 @@
-
-html{
+html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
 
     &:has(dialog[open]) {
-    overflow: hidden;
-  }
+        overflow: hidden;
+    }
 }
 
-main{
+header {
+    position: sticky !important;
+    top: 0;
+    z-index: 1;
+}
+
+main {
     background-image: url("./assets/img/pokemon_background.svg");
-    min-height: 100vh;
+    min-height: calc(100vh - 120px);
     background-size: cover;
-    background-attachment: fixed; 
+    background-attachment: fixed;
     color: white;
 }
 
-.externaldistance{
+.externaldistance {
     padding-left: 120px;
     padding-right: 120px;
 }
 
-.content{
+.content {
     padding-top: 20px;
     display: flex;
     align-items: center;
@@ -35,7 +40,7 @@ main{
     gap: 20px;
 }
 
-.card{
+.card {
     width: 200px !important;
     height: 250px !important;
     color: white !important;
@@ -45,31 +50,80 @@ main{
     gap: 5px;
 }
 
- .card img{
+.card img {
     max-height: 100px;
     max-width: 190px;
-} 
+}
 
-.containertype{
+.containertype {
     height: 30px;
     width: 100px;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.logo{
+.logo {
     height: 40px;
     padding-left: 50px;
-   
+    animation: floatLogo 3s ease-in-out infinite;
 }
 
-.pokemonImg{
+@keyframes floatLogo {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-4px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.pokemonImg {
     padding-top: 20px;
     height: 120px;
     width: 220px;
 }
 
-.pokemonImg:has(dialog[open]){
+.pokemonImg:has(dialog[open]) {
     height: 1000px;
     width: 2200px;
+}
+
+.container-fluid div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-fluid div span {
+    color: red;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.displayNone {
+    display: none;
+}
+
+.overFlowHidden{
+    overflow: hidden;
+}
+
+footer {
+    height: 60px;
+    background-color: rgb(100, 100, 100);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
