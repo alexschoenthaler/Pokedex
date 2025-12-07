@@ -44,12 +44,24 @@ function getDialogTypes(pokemonNumber){
     return types;  
 }
 
-/** Loads the description of a Pokemon from the API */
-async function getDialogDescription(pokemonNumber) {
-    dialogPokemonDescription = [];
-    let refResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonNumber+1}/`);
-    let refResponseasJson =  await refResponse.json();
-    let pokemonDescription = refResponseasJson.flavor_text_entries[1].flavor_text;
-    dialogPokemonDescription.push(pokemonDescription);
+function nextCardPokemonDialog(pokemonNumber){
+    pokemonNumber++;
+    showDialogContent(pokemonDialog(pokemonNumber));
 }
+
+function previousCardPokemonDialog(pokemonNumber) {
+    pokemonNumber--;
+    showDialogContent(pokemonDialog(pokemonNumber));
+}
+
+function nextCardStatsDialog(pokemonNumber){
+    pokemonNumber++;
+    showDialogContent(statsDialog(pokemonNumber));
+}
+
+function previousCardStatsDialog(pokemonNumber) {
+    pokemonNumber--;
+    showDialogContent(statsDialog(pokemonNumber));
+}
+
 

@@ -12,7 +12,11 @@ function pokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecond
 function pokemonDialog(pokemonNumber) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
-                ${pokemonImges[pokemonNumber]}
+                <div class = "switchCards">
+                    <span class="nextCard" onclick ="previousCardPokemonDialog(${pokemonNumber})">&#x2BB2;</span>
+                    ${pokemonImges[pokemonNumber]}
+                    <span class="nextCard" onclick ="nextCardPokemonDialog(${pokemonNumber})">&#x2BB3;</span>
+                </div>
                 <table>
                     <tr>
                         <td>Name:</td>
@@ -36,9 +40,8 @@ function pokemonDialog(pokemonNumber) {
                     </tr>
                 </table>
             </article>
-                <div class ="arrows">
-                    <span class ="arrow" onclick = "showDialogContent(statsDialog(${pokemonNumber}))">&#129172;</span>
-                    <span class ="arrow" onclick = "showDialogContent(statsDialog(${pokemonNumber}))">&#129174;</span>
+                <div class="statsContainer">
+                    <img src="./assets/icons/icons8-stats-64.png" class ="stats" onclick = "showDialogContent(statsDialog(${pokemonNumber}))"></img>     
                 </div>
             </div>`
 }
@@ -47,55 +50,58 @@ function pokemonDialog(pokemonNumber) {
 function statsDialog(pokemonNumber) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
-                ${pokemonImges[pokemonNumber]}
+                <div class = "switchCards">
+                    <span class="nextCard" onclick ="previousCardStatsDialog(${pokemonNumber})">&#x2BB2;</span>
+                    ${pokemonImges[pokemonNumber]}
+                    <span class="nextCard" onclick ="nextCardStatsDialog(${pokemonNumber})">&#x2BB3;</span>
+                </div>
                 <table>
                     <tr>
                         <td>${pokemonsDetail[pokemonNumber].stats[0].stat.name}</td>
                         <td><div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[0].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[0].base_stat}</div>
+                            <div class="progress-bar" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[0].base_stat}%; background-color: green !important;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[0].base_stat}</div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>${pokemonsDetail[pokemonNumber].stats[1].stat.name}</td>
                         <td><div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[1].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[1].base_stat}</div>
+                            <div class="progress-bar" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[1].base_stat}%; background-color: green !important;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[1].base_stat}</div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>${pokemonsDetail[pokemonNumber].stats[2].stat.name}</td>
                         <td><div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[2].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[2].base_stat}</div>
+                            <div class="progress-bar" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[2].base_stat}%; background-color: green !important;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[2].base_stat}</div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>sp. attack</td>
                         <td><div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[3].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[3].base_stat}</div>
+                            <div class="progress-bar" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[3].base_stat}%; background-color: green !important;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[3].base_stat}</div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>sp. defense</td>
                         <td><div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[4].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[4].base_stat}</div>
+                            <div class="progress-bar" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[4].base_stat}%; background-color: green !important;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[4].base_stat}</div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>${pokemonsDetail[pokemonNumber].stats[5].stat.name}</td>
                         <td><div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[5].base_stat}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[5].base_stat}</div>
+                            <div class="progress-bar" role="progressbar" style="width:${pokemonsDetail[pokemonNumber].stats[5].base_stat}%; background-color: green !important;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${pokemonsDetail[pokemonNumber].stats[5].base_stat}</div>
                             </div>
                         </td>
                     </tr>
                 </table>
             </article>
-                <div class ="arrows">
-                    <span class ="arrow" onclick = "showDialogContent(pokemonDialog(${pokemonNumber}))">&#129172;</span>
-                    <span class ="arrow" onclick = "showDialogContent(pokemonDialog(${pokemonNumber}))">&#129174;</span>
+                <div class="statsContainer">
+                    <img src="./assets/icons/icons8-info-100.png" class ="stats" onclick = "showDialogContent(pokemonDialog(${pokemonNumber}))"></img>   
                 </div>
             </div>
             `

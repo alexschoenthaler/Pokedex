@@ -6,16 +6,17 @@ let pokemonsDetail = [];
 let pokemonsIDs = [];
 let pokemonsNames = [];
 let pokemonImges = [];
-let pokemonIndex = 30;
-let addedNewPokemons = 31;
+let pokemonTypes = [];
+let limitPokemons = 31;
+let offsetPokemons = 0;
 
 /** Initializes the app and loads the first Pokemon */
 async function init() {
-    await StartPokemons();
+    await GetPokemons();
 }
 
 /** Fetches Pokemon data from the API using the specified path */
-async function GetPokemons(path) {
+async function GetData(path) {
     try {
         let response = await fetch(path);
         let responseAsJson = await response.json();
@@ -25,25 +26,27 @@ async function GetPokemons(path) {
     }
 }
 
-/** Loads the first 31 Pokemon when the app starts */
-async function StartPokemons() {
-    let responseAsJson = await GetPokemons("https://pokeapi.co/api/v2/pokemon?limit=31&offset=0");
+async function GetPokemons() {
+    startLoadingSpinner();
+    let responseAsJson = await GetData(`https://pokeapi.co/api/v2/pokemon?limit=${limitPokemons}&offset=${offsetPokemons}`);
     let pokemons = responseAsJson.results;
-    let pokemonindex = -1;
-    await renderPokemons(pokemons, pokemonindex);
-}
-
-/** Renders a list of Pokemon as cards in the content area */
-async function renderPokemons(pokemons, pokemonindex) {
     for (let index = 0; index < pokemons.length; index++) {
-        pokemonindex++;
-        pokemonsDetail.push(await GetPokemons(pokemons[index].url));
-        let pokemonType = GetPokemonTypes(pokemonindex);
-        let pokemonName = capitalizeFirstLetter(pokemons[index].name);
-        await getPokemonImg(pokemonindex);
-        content.innerHTML += pokemonCard(pokemonName, pokemonindex, pokemonType[0].firstType, pokemonType[0].secondType);
+        pokemonsDetail.push(await GetData(pokemons[index].url));
+        GetPokemonTypes(index + offsetPokemons);
+        await getPokemonImg(index + offsetPokemons);
     }
     GetPokemonSearchData();
+    renderPokemons();
+    offsetPokemons += limitPokemons;
+    stopLoadingSpinner();
+}
+
+async function renderPokemons() {
+    for (let index = offsetPokemons; index < pokemonsDetail.length; index++) {
+        let pokemonType = pokemonTypes[index];
+        let pokemonName = capitalizeFirstLetter(pokemonsNames[index]);
+        content.innerHTML += pokemonCard(pokemonName,index,pokemonType.firstType,pokemonType.secondType);
+        }
 }
 
 /** Loads the SVG image of a Pokemon and adds CSS class */
@@ -55,7 +58,6 @@ async function getPokemonImg(pokemonindex) {
 
 /** Extracts the types of a Pokemon (first and optional second type) */
 function GetPokemonTypes(index) {
-    let pokemonTypes = []
     let pokemonFirstType = pokemonsDetail[index].types[0].type.name;
     let pokemonSecondType = ``;
     switch (pokemonsDetail[index].types[1]) {
@@ -69,17 +71,12 @@ function GetPokemonTypes(index) {
         firstType: pokemonFirstType,
         secondType: pokemonSecondType
     })
-    return pokemonTypes;
 }
 
 /** Loads 20 more Pokemon and adds them to the display */
 async function LoadMorePokemons() {
-    let responseAsJson = await GetPokemons(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${addedNewPokemons}`);
-    let pokemons = responseAsJson.results;
-    await renderPokemons(pokemons, pokemonIndex);
-    stopLoadingSpinner();
-    addedNewPokemons += 20;
-    pokemonIndex += 20;
+    limitPokemons = 20;
+    GetPokemons()
 }
 
 /** Creates lists of IDs and names for the search function */
@@ -142,6 +139,9 @@ function returnToStart() {
     pokemonsIDs = [];
     pokemonsNames = [];
     pokemonImges = [];
+    pokemonTypes = [];
+    limitPokemons = 31;
+    offsetPokemons = 0;
     init();
 
 }
@@ -154,9 +154,9 @@ function emtyingSiteContent() {
 
 /** Renders a found Pokemon from the search results */
 function RenderSearchedPokemons(foundPokemons, foundPokemonsIDs) {
-    let pokemonType = GetPokemonTypes(foundPokemonsIDs);
+    let pokemonType = pokemonTypes[foundPokemonsIDs];
     let pokemonNames = capitalizeFirstLetter(foundPokemons);
-    content.innerHTML += pokemonCard(pokemonNames, foundPokemonsIDs, pokemonType[0].firstType, pokemonType[0].secondType);
+    content.innerHTML += pokemonCard(pokemonNames, foundPokemonsIDs, pokemonType.firstType, pokemonType.secondType);
 }
 
 /** Converts the first letter of a string to uppercase */

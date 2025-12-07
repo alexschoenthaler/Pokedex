@@ -38,7 +38,7 @@ dialog {
     align-items: center;
     height: 500px;
     width: 350px;
-    background-color: rgb(172, 168, 168);
+    background: linear-gradient(135deg, #baa75d 0%, #d56f6f 100%);
 
     .pokemonImg {
         padding-top: 20px;
@@ -53,21 +53,43 @@ td {
     max-width: 300px;
 }
 
-.arrows {
-    display: flex;
-    justify-content: space-between;
-    font-size: 50px;
+.statsContainer{
     width: 90%;
-    color: rgb(97, 96, 96);
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
 }
 
-.arrow:hover {
-    color: black;
+.stats{
+    height: 60px;
+
+}
+
+.stats:hover{
     cursor: pointer;
 }
 
 .progress {
     width: 200px;
+}
+
+.nextCard{
+    font-size: 50px;
+    color: rgb(145, 96, 96);
+    font-weight: bold;
+}
+
+.nextCard:hover{
+    color: rgb(109, 30, 30);
+    cursor: pointer;
+}
+
+.switchCards{
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 @media (max-width:490px) {
@@ -92,3 +114,4 @@ td {
     }
 
 }
+
