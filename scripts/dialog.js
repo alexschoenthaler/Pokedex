@@ -45,22 +45,38 @@ function getDialogTypes(pokemonNumber){
 }
 
 function nextCardPokemonDialog(pokemonNumber){
-    pokemonNumber++;
+    if (pokemonNumber >= pokemonsDetail.length -1) {
+        pokemonNumber = 0;
+    }else{
+        pokemonNumber++;
+    }
     showDialogContent(pokemonDialog(pokemonNumber));
 }
 
 function previousCardPokemonDialog(pokemonNumber) {
-    pokemonNumber--;
+    if (pokemonNumber == 0) {
+        pokemonNumber = pokemonsDetail.length -1;
+    }else{
+        pokemonNumber--;
+    }
     showDialogContent(pokemonDialog(pokemonNumber));
 }
 
 function nextCardStatsDialog(pokemonNumber){
-    pokemonNumber++;
+    if (pokemonNumber >= pokemonsDetail.length -1) {
+        pokemonNumber = 0;
+    }else{
+        pokemonNumber++;
+    }
     showDialogContent(statsDialog(pokemonNumber));
 }
 
 function previousCardStatsDialog(pokemonNumber) {
-    pokemonNumber--;
+    if (pokemonNumber == 0) {
+        pokemonNumber = pokemonsDetail.length -1;
+    }else{
+        pokemonNumber--;
+    }
     showDialogContent(statsDialog(pokemonNumber));
 }
 

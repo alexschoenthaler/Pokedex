@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50" height="50">
+  <!-- Pokeball outer circle with black border -->
+  <circle cx="25" cy="25" r="24" fill="#fff" stroke="#000" stroke-width="2"/>
+  
+  <!-- Top red half -->
+  <path d="M 2 25 A 23 23 0 0 1 48 25 L 35 25 A 10 10 0 0 0 15 25 Z" fill="#e74c3c"/>
+  
+  <!-- Bottom white half -->
+  <path d="M 2 25 A 23 23 0 0 0 48 25 L 35 25 A 10 10 0 0 1 15 25 Z" fill="#fff"/>
+  
+  <!-- Middle black line -->
+  <line x1="2" y1="25" x2="15" y2="25" stroke="#000" stroke-width="2"/>
+  <line x1="35" y1="25" x2="48" y2="25" stroke="#000" stroke-width="2"/>
+  
+  <!-- Center button with border -->
+  <circle cx="25" cy="25" r="10" fill="#fff" stroke="#000" stroke-width="2"/>
+  <circle cx="25" cy="25" r="6" fill="#fff" stroke="#000" stroke-width="1.5"/>
+  <circle cx="25" cy="25" r="3" fill="#fff" stroke="#000" stroke-width="1"/>
+</svg>
