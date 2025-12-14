@@ -28,8 +28,7 @@
                         <span id="MessageErr"></span>
                         <form id="pokemonSearch" class="d-flex" role="search">
                             <input id="inputSearch" class="form-control me-2" type="search" placeholder="Search (min. 3C)"
-                                aria-label="Search" />
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                                aria-label="Search" onkeyup="SearchPokemons()" />
                         </form>
                     </div>
                 </div>
@@ -58,5 +57,5 @@
 <script src="./scripts/CardTamplate.js"></script>
 <script src="./script.js"></script>
 <script src="./scripts/dialog.js"></script>
-<script src="./scripts/overlay.js"></script>
+<script src="./scripts/LoadingSpinner.js"></script>
 </html>

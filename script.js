@@ -1,12 +1,11 @@
 
 let content = document.getElementById('content');
-let refpokemonSearch = document.getElementById('pokemonSearch');
+let refpokemonSearch = document.getElementById('inputSearch');
 let refButtonContainer = document.getElementById("buttonContainer");
 let pokemonsDetail = [];
-let pokemonsIDs = [];
-let pokemonsNames = [];
 let pokemonImges = [];
 let pokemonTypes = [];
+let allPokemonsFound = [];
 let limitPokemons = 31;
 let offsetPokemons = 0;
 
@@ -26,6 +25,7 @@ async function GetData(path) {
     }
 }
 
+/** Loads Pokemon data from the API and stores it in global arrays */
 async function GetPokemons() {
     startLoadingSpinner();
     let responseAsJson = await GetData(`https://pokeapi.co/api/v2/pokemon?limit=${limitPokemons}&offset=${offsetPokemons}`);
@@ -35,23 +35,23 @@ async function GetPokemons() {
         GetPokemonTypes(index + offsetPokemons);
         await getPokemonImg(index + offsetPokemons);
     }
-    GetPokemonSearchData();
     renderPokemons();
     offsetPokemons += limitPokemons;
     stopLoadingSpinner();
 }
 
+/** Renders all loaded Pokemon as cards in the content area */
 async function renderPokemons() {
     for (let index = offsetPokemons; index < pokemonsDetail.length; index++) {
         let pokemonType = pokemonTypes[index];
-        let pokemonName = capitalizeFirstLetter(pokemonsNames[index]);
+        let pokemonName = capitalizeFirstLetter(pokemonsDetail[index].name);
         content.innerHTML += pokemonCard(pokemonName,index,pokemonType.firstType,pokemonType.secondType);
         }
 }
 
 /** Loads the SVG image of a Pokemon and adds CSS class */
 async function getPokemonImg(pokemonindex) {
-    let refImg = await fetch(`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemonindex + 1}.svg`);
+    let refImg = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonindex + 1}.svg`);
     let refImgTxt = await refImg.text();
     pokemonImges.push(refImgTxt.substring(0, 44) + 'class= "pokemonImg" ' + refImgTxt.substring(44, refImgTxt.length));
 }
@@ -79,21 +79,6 @@ async function LoadMorePokemons() {
     GetPokemons()
 }
 
-/** Creates lists of IDs and names for the search function */
-function GetPokemonSearchData() {
-    pokemonsIDs = [];
-    pokemonsNames = [];
-    pokemonsDetail.forEach(element => {
-        pokemonsIDs.push(element.id);
-        pokemonsNames.push(capitalizeFirstLetter(element.name));
-    });
-}
-
-refpokemonSearch.addEventListener("submit", e => {
-    e.preventDefault();
-    SearchPokemons();
-})
-
 /** Searches loaded Pokemon by search term */
 function SearchPokemons() {
     let input = document.getElementById("inputSearch");
@@ -117,12 +102,13 @@ function SearchPokemons() {
 function startTheSearch(input, refMessageErr) {
     refMessageErr.innerHTML = "";
     emtyingSiteContent();
+    allPokemonsFound = [];
     let filter = input.value.toUpperCase();
     let count = 0;
-    for (let searchIndex = 0; searchIndex < pokemonsNames.length; searchIndex++) {
-        let pokemonName = pokemonsNames[searchIndex].toUpperCase();
+    for (let searchIndex = 0; searchIndex < pokemonsDetail.length; searchIndex++) {
+        let pokemonName = pokemonsDetail[searchIndex].name.toUpperCase();
         if (pokemonName.indexOf(filter) > -1) {
-            RenderSearchedPokemons(pokemonsNames[searchIndex], pokemonsIDs[searchIndex] - 1);
+            RenderSearchedPokemons(pokemonsDetail[searchIndex].name, pokemonsDetail[searchIndex].id - 1);
             count++;
         };
     }
@@ -136,10 +122,9 @@ function returnToStart() {
     emtyingSiteContent();
     refButtonContainer.innerHTML = '<button class="btn btn-outline-success" onclick="LoadMorePokemons()">More Pokemons</button>';
     pokemonsDetail = [];
-    pokemonsIDs = [];
-    pokemonsNames = [];
     pokemonImges = [];
     pokemonTypes = [];
+    allPokemonsFound = [];
     limitPokemons = 31;
     offsetPokemons = 0;
     init();
@@ -156,7 +141,9 @@ function emtyingSiteContent() {
 function RenderSearchedPokemons(foundPokemons, foundPokemonsIDs) {
     let pokemonType = pokemonTypes[foundPokemonsIDs];
     let pokemonNames = capitalizeFirstLetter(foundPokemons);
-    content.innerHTML += pokemonCard(pokemonNames, foundPokemonsIDs, pokemonType.firstType, pokemonType.secondType);
+    content.innerHTML += searchPokemonCard(pokemonNames, foundPokemonsIDs, pokemonType.firstType, pokemonType.secondType); 
+    allPokemonsFound.push(foundPokemonsIDs);
+    console.log(foundPokemonsIDs);
 }
 
 /** Converts the first letter of a string to uppercase */
