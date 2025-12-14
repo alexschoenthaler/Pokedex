@@ -24,6 +24,10 @@ async function showDialogContent(tamplate) {
     let refcardDetails = document.getElementById('cardDetails');
     refcardDetails.innerHTML ="";
     refcardDetails.innerHTML = tamplate;
+    if (allPokemonsFound.length == 1) {
+        document.getElementById("previousCard").classList.add("displayNone");
+        document.getElementById("nextCard").classList.add("displayNone");
+    }
 }
 
 /** Extracts all abilities of a Pokemon for display */

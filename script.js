@@ -3,7 +3,7 @@ let content = document.getElementById('content');
 let refpokemonSearch = document.getElementById('inputSearch');
 let refButtonContainer = document.getElementById("buttonContainer");
 let pokemonsDetail = [];
-let pokemonImges = [];
+let pokemonCards = [];
 let pokemonTypes = [];
 let allPokemonsFound = [];
 let limitPokemons = 31;
@@ -33,10 +33,12 @@ async function GetPokemons() {
     for (let index = 0; index < pokemons.length; index++) {
         pokemonsDetail.push(await GetData(pokemons[index].url));
         GetPokemonTypes(index + offsetPokemons);
-        await getPokemonImg(index + offsetPokemons);
     }
     renderPokemons();
     offsetPokemons += limitPokemons;
+    if(offsetPokemons >= 651){
+        refButtonContainer.innerHTML = "";
+    }
     stopLoadingSpinner();
 }
 
@@ -45,15 +47,9 @@ async function renderPokemons() {
     for (let index = offsetPokemons; index < pokemonsDetail.length; index++) {
         let pokemonType = pokemonTypes[index];
         let pokemonName = capitalizeFirstLetter(pokemonsDetail[index].name);
-        content.innerHTML += pokemonCard(pokemonName,index,pokemonType.firstType,pokemonType.secondType);
+        pokemonCards.push(pokemonCard(pokemonName,index,pokemonType.firstType,pokemonType.secondType));
         }
-}
-
-/** Loads the SVG image of a Pokemon and adds CSS class */
-async function getPokemonImg(pokemonindex) {
-    let refImg = await fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonindex + 1}.svg`);
-    let refImgTxt = await refImg.text();
-    pokemonImges.push(refImgTxt.substring(0, 44) + 'class= "pokemonImg" ' + refImgTxt.substring(44, refImgTxt.length));
+        content.innerHTML = pokemonCards.join("");
 }
 
 /** Extracts the types of a Pokemon (first and optional second type) */
@@ -95,11 +91,11 @@ function SearchPokemons() {
             refMessageErr.innerHTML = "";
         }, 3000)
     }
-
 }
 
 /** Executes the search logic and displays matching Pokemon */
 function startTheSearch(input, refMessageErr) {
+    startLoadingSpinner();
     refMessageErr.innerHTML = "";
     emtyingSiteContent();
     allPokemonsFound = [];
@@ -113,8 +109,9 @@ function startTheSearch(input, refMessageErr) {
         };
     }
     if (count == 0) {
-        content.innerHTML = 'No Pokemon with this Search found'
+        content.innerHTML = 'No Pokemon with this Search found';
     }
+    stopLoadingSpinner();
 }
 
 /** Resets the app to initial state and reloads all Pokemon */
@@ -122,9 +119,9 @@ function returnToStart() {
     emtyingSiteContent();
     refButtonContainer.innerHTML = '<button class="btn btn-outline-success" onclick="LoadMorePokemons()">More Pokemons</button>';
     pokemonsDetail = [];
-    pokemonImges = [];
     pokemonTypes = [];
     allPokemonsFound = [];
+    pokemonCards = [];
     limitPokemons = 31;
     offsetPokemons = 0;
     init();
@@ -143,7 +140,6 @@ function RenderSearchedPokemons(foundPokemons, foundPokemonsIDs) {
     let pokemonNames = capitalizeFirstLetter(foundPokemons);
     content.innerHTML += searchPokemonCard(pokemonNames, foundPokemonsIDs, pokemonType.firstType, pokemonType.secondType); 
     allPokemonsFound.push(foundPokemonsIDs);
-    console.log(foundPokemonsIDs);
 }
 
 /** Converts the first letter of a string to uppercase */

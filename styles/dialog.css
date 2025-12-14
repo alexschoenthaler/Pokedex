@@ -87,7 +87,7 @@ td {
 .switchCards{
     margin-top: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }

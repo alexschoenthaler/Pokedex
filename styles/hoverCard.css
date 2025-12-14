@@ -25,8 +25,6 @@
 .holographic-card:hover {
   box-shadow: 0 0 20px rgba(0,255,255,0.5);
   cursor: pointer;
-  /* transform: scale(1.05); */
-
 }
 
 .holographic-card:hover::before {
