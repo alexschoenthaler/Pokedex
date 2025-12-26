@@ -1,12 +1,11 @@
 /** Generates HTML for a Pokemon card */
 function pokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecondType) {
     return `<div class = "card type-${pokemonFirstType} holographic-card" onclick =" opendialog('cardDetails'), showDialogContent(pokemonDialog(${pokemonNumber}))">
-            <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber +1}.svg">
+            <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
             <span>${pokemonName}</span>
             <img src="./assets/img/PokemonTypes/${pokemonFirstType}.png" alt="${pokemonFirstType}">
             <img src ="${pokemonSecondType}">
             </div>`
-
 }
 
 /** Generates HTML for the detail view of a Pokemon in the dialog */
@@ -14,9 +13,9 @@ function pokemonDialog(pokemonNumber, switchCardindex = 1) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
                 <div class = "switchCards">
-                    <span class="nextCard" onclick ="previousCardPokemonDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB2;</span>
-                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber +1}.svg">
-                    <span class="nextCard" onclick ="nextCardPokemonDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB3;</span>
+                    <img class="nextCard" onclick ="previousCardPokemonDialog(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/left.png" alt="arrow_left">
+                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
+                    <img class="nextCard" onclick ="nextCardPokemonDialog(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/right.png" alt="arrow_right">
                 </div>
                 <table>
                     <tr>
@@ -52,9 +51,9 @@ function statsDialog(pokemonNumber, switchCardindex = 1) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
                 <div class = "switchCards">
-                    <span class="nextCard" onclick ="previousCardStatsDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB2;</span>
-                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber +1}.svg">
-                    <span class="nextCard" onclick ="nextCardStatsDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB3;</span>
+                    <img class="nextCard" onclick ="previousCardStatsDialog(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/left.png" alt="arrow_left">
+                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
+                    <img class="nextCard" onclick ="nextCardStatsDialog(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/right.png" alt="arrow_right">
                 </div>
                 <table>
                     <tr>
@@ -111,7 +110,7 @@ function statsDialog(pokemonNumber, switchCardindex = 1) {
 /** Generates HTML for a Pokemon card in search results */
 function searchPokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecondType) {
     return `<div class = "card type-${pokemonFirstType} holographic-card" onclick =" opendialog('cardDetails'), showDialogContent(searchPokemonDialog(${pokemonNumber}))">
-            <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber +1}.svg">
+            <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
             <span>${pokemonName}</span>
             <img src="./assets/img/PokemonTypes/${pokemonFirstType}.png" alt="${pokemonFirstType}">
             <img src ="${pokemonSecondType}">
@@ -123,9 +122,9 @@ function searchPokemonDialog(pokemonNumber, switchCardindex = 2) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
                 <div class = "switchCards">
-                    <span id ="previousCard" class="nextCard" onclick ="previousCardPokemonDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB2;</span>
-                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber +1}.svg">
-                    <span id ="nextCard" class="nextCard" onclick ="nextCardPokemonDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB3;</span>
+                    <img class="nextCard" id="nextCardLeft" onclick ="previousCardSearch(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/left.png" alt="arrow_left">
+                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
+                    <img class="nextCard" id="nextCardRight" onclick ="nextCardSearch(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/right.png" alt="arrow_right">
                 </div>
                 <table>
                     <tr>
@@ -161,9 +160,9 @@ function searchStatsDialog(pokemonNumber, switchCardindex = 2) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
                 <div class = "switchCards">
-                    <span id ="previousCard" class="nextCard" onclick ="previousCardStatsDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB2;</span>
-                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber +1}.svg">
-                    <span id ="nextCard" class="nextCard" onclick ="nextCardStatsDialog(${pokemonNumber}, ${switchCardindex})">&#x2BB3;</span>
+                    <img class="nextCard" id="nextCardLeft" onclick ="previousCardStatsSearch(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/left.png" alt="arrow_left">
+                    <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
+                    <img class="nextCard" id="nextCardRight" onclick ="nextCardStatsSearch(${pokemonNumber}, ${switchCardindex})" src="./assets/icons/right.png" alt="arrow_right">
                 </div>
                 <table>
                     <tr>
@@ -213,7 +212,6 @@ function searchStatsDialog(pokemonNumber, switchCardindex = 2) {
                 <div class="statsContainer">
                     <img src="./assets/icons/icons8-info-100.png" class ="stats" onclick = "showDialogContent(searchPokemonDialog(${pokemonNumber}))"></img>   
                 </div>
-            </div>
-            `
+            </div> `
 }
 

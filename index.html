@@ -20,20 +20,19 @@
 
 <body onload="init()" id="myBody">
     <header>
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid contentlimitation">
-                    <img class="logo" src="./assets/Logo/Logo.png" alt="Logo">
-                    <img class="logo_mobile" src="./assets/Logo/pokeball.svg" alt="Logo_Mobile">
-                    <div>
-                        <span id="MessageErr"></span>
-                        <form id="pokemonSearch" class="d-flex" role="search">
-                            <input id="inputSearch" class="form-control me-2" placeholder="Search (min. 3C)"
-                                aria-label="Search" onkeyup="SearchPokemons()" />
-                        </form>
-                    </div>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid contentlimitation">
+                <img class="logo" src="./assets/Logo/Logo.png" alt="Logo">
+                <img class="logo_mobile" src="./assets/Logo/pokeball.svg" alt="Logo_Mobile">
+                <div>
+                    <span id="MessageErr"></span>
+                    <form id="pokemonSearch" class="d-flex" role="search">
+                        <input id="inputSearch" class="form-control me-2" placeholder="Search (min. 3C)"
+                            aria-label="Search" onkeyup="SearchPokemons()" />
+                    </form>
                 </div>
-            </nav>
-       
+            </div>
+        </nav>
     </header>
     <main>
         <div class="contentlimitation">
@@ -48,14 +47,16 @@
         <dialog id="cardDetails" onclick="closedialog('cardDetails')">
         </dialog>
     </main>
-            
+
     <footer>
         <p>Created by @Alex Schönthaler</p>
         <!-- <a target="_blank" href="https://icons8.com/icon/i4eeX4vSCNjo/stats">Statistiken</a> Icon von <a target="_blank" href="https://icons8.com">Icons8</a> -->
         <!-- <a target="_blank" href="https://icons8.com/icon/mHpzpCOQXE4k/info">Info</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> -->
+        <!-- <a target="_blank" href="https://icons8.com/icon/zCbCPv6CY90G/drop-down">Quadrat runter</a> Icon von <a target="_blank" href="https://icons8.com">Icons8</a> -->
 </body>
 <script src="./scripts/CardTamplate.js"></script>
 <script src="./script.js"></script>
 <script src="./scripts/dialog.js"></script>
 <script src="./scripts/LoadingSpinner.js"></script>
+
 </html>

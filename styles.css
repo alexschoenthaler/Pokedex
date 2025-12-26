@@ -27,8 +27,9 @@ header {
 main {
     background-image: url("./assets/img/pokemon_background.svg");
     min-height: calc(100vh - 120px);
-    background-size: cover;
-    background-attachment: fixed;
+    /* background-size: cover; */
+    background-position: center;
+    background-attachment: scroll;
     color: white;
 }
 
@@ -169,5 +170,9 @@ footer {
 
     .logo_mobile {
         display: unset;
+    }
+
+    .form-control {
+        width: 150px !important;
     }
 }

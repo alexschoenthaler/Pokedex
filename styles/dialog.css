@@ -53,19 +53,15 @@ td {
     max-width: 300px;
 }
 
-.statsContainer{
+.statsContainer {
     width: 90%;
     display: flex;
     justify-content: flex-end;
     padding-bottom: 20px;
 }
 
-.stats{
+.stats {
     height: 60px;
-
-}
-
-.stats:hover{
     cursor: pointer;
 }
 
@@ -73,22 +69,18 @@ td {
     width: 200px;
 }
 
-.nextCard{
-    font-size: 50px;
-    color: rgb(145, 96, 96);
-    font-weight: bold;
-}
-
-.nextCard:hover{
-    color: rgb(109, 30, 30);
+.nextCard {
+    height: 30px;
+    width: 30px;
     cursor: pointer;
 }
 
-.switchCards{
+.switchCards {
     margin-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     width: 100%;
 }
 
@@ -96,6 +88,11 @@ td {
 
     .dialogCardDetails {
         width: 300px;
+    }
+
+    .pokemonImg {
+        height: 150px;
+        width: 120px;
     }
 }
 
@@ -112,6 +109,4 @@ td {
     .progress {
         width: 150px;
     }
-
 }
-

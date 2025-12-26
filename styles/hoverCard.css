@@ -11,25 +11,21 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    0deg, 
-    transparent, 
-    transparent 30%, 
-    rgba(0,255,255,0.3)
-  );
+  background: linear-gradient(0deg,
+      transparent,
+      transparent 30%,
+      rgba(0, 255, 255, 0.3));
   transform: rotate(-45deg);
   transition: all 0.5s ease;
   opacity: 0;
 }
 
 .holographic-card:hover {
-  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
   cursor: pointer;
 }
 
 .holographic-card:hover::before {
   opacity: 1;
-  transform: rotate(-45deg) translateY(100%);  /* translateY =  moves the element along the y-axis  */
-
+  transform: rotate(-45deg) translateY(100%);
 }
-
