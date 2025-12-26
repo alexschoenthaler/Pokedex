@@ -3,10 +3,11 @@ html {
     scrollbar-gutter: stable;
 }
 
-body {
-    margin: 0;
-    padding: 0;
+body{
 
+    margin:0;
+    padding: 0;
+    
     &:has(dialog[open]) {
         overflow: hidden;
     }
@@ -173,6 +174,6 @@ footer {
     }
 
     .form-control {
-        width: 150px !important;
+        width: 130px !important;
     }
 }

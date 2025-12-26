@@ -99,14 +99,14 @@ td {
 @media (max-width:380px) {
 
     .dialogCardDetails {
-        width: 270px;
+        width: 240px;
     }
 
     td {
-        max-width: 250px;
+        max-width: 230px;
     }
 
     .progress {
-        width: 150px;
+        width: 130px;
     }
 }
