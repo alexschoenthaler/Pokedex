@@ -1,3 +1,5 @@
+✨ Pokédex ✨
+
 This project is for learning purposes only.
 
 The goal is to practice using JavaScript and to learn how to work with data from an external API. The data is fetched from the PokéAPI and displayed dynamically in the browser.
