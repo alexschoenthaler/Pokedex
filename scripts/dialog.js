@@ -1,7 +1,13 @@
 
+/** @type {string[]} Temporary storage for additional dialog descriptions. */
 let dialogPokemonDescription = [];
 
-/** Opens the dialog with animation */
+/**
+ * Opens a dialog and starts the opening animation.
+ *
+ * @param {string} ID DOM ID of the dialog element to open.
+ * @returns {void}
+ */
 function opendialog(ID) {
     const refdialog = document.getElementById(ID);
     refdialog.showModal();
@@ -9,7 +15,12 @@ function opendialog(ID) {
     refdialog.classList.add('opend');
 }
 
-/** Closes the dialog with animation */
+/**
+ * Closes a dialog with a short closing animation.
+ *
+ * @param {string} ID DOM ID of the dialog element to close.
+ * @returns {void}
+ */
 function closedialog(ID) {
     const refdialog = document.getElementById(ID);
     refdialog.classList.add('closed');
@@ -19,7 +30,12 @@ function closedialog(ID) {
     }, 200)
 }
 
-/** Updates the dialog content with a new template */
+/**
+ * Replaces the current dialog content with a new HTML template.
+ *
+ * @param {string} tamplate HTML string that should be displayed in the dialog.
+ * @returns {void}
+ */
 function showDialogContent(tamplate) {
     const refcardDetails = document.getElementById('cardDetails');
     refcardDetails.innerHTML = "";
@@ -30,7 +46,12 @@ function showDialogContent(tamplate) {
     }
 }
 
-/** Extracts all abilities of a Pokemon for display */
+/**
+ * Extracts all abilities of a Pokemon for the detail view.
+ *
+ * @param {number} pokemonNumber Index of the Pokemon in the detail array.
+ * @returns {string[]} List of all abilities of the Pokemon.
+ */
 function getDialogAbylities(pokemonNumber) {
     let abylities = [];
     pokemonsDetail[pokemonNumber].abilities.forEach(element => {
@@ -39,7 +60,12 @@ function getDialogAbylities(pokemonNumber) {
     return abylities;
 }
 
-/** Extracts all types of a Pokemon for dialog display */
+/**
+ * Extracts all types of a Pokemon for the detail view.
+ *
+ * @param {number} pokemonNumber Index of the Pokemon in the detail array.
+ * @returns {string[]} List of all types of the Pokemon.
+ */
 function getDialogTypes(pokemonNumber) {
     let types = [];
     pokemonsDetail[pokemonNumber].types.forEach(element => {
@@ -48,7 +74,13 @@ function getDialogTypes(pokemonNumber) {
     return types;
 }
 
-/** Navigates to the next Pokemon in the dialog (handles both normal and search mode) */
+/**
+ * Switches to the next Pokemon in the dialog and handles list and search mode.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @param {number} index Mode flag for normal view or search view.
+ * @returns {void}
+ */
 function nextCardPokemonDialog(pokemonNumber, index) {
     if (index == 1) {
         nextCardSart(pokemonNumber);
@@ -58,7 +90,12 @@ function nextCardPokemonDialog(pokemonNumber, index) {
 
 }
 
-/** Shows the next Pokemon in normal browsing mode */
+/**
+ * Shows the next Pokemon in normal browsing mode.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function nextCardSart(pokemonNumber) {
     if (pokemonNumber >= pokemonsDetail.length - 1) {
         pokemonNumber = 0;
@@ -68,7 +105,12 @@ function nextCardSart(pokemonNumber) {
     showDialogContent(pokemonDialog(pokemonNumber));
 }
 
-/** Shows the next Pokemon in search results */
+/**
+ * Shows the next Pokemon within the search results.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function nextCardSearch(pokemonNumber) {
     let pokemonNextCardSearchIndex = allPokemonsFound.indexOf(pokemonNumber);
 
@@ -82,7 +124,13 @@ function nextCardSearch(pokemonNumber) {
     showDialogContent(searchPokemonDialog(pokemonNumber));
 }
 
-/** Navigates to the previous Pokemon in the dialog (handles both normal and search mode) */
+/**
+ * Switches to the previous Pokemon in the dialog and handles list and search mode.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @param {number} index Mode flag for normal view or search view.
+ * @returns {void}
+ */
 function previousCardPokemonDialog(pokemonNumber, index) {
     if (index == 1) {
         previousCardSart(pokemonNumber);
@@ -91,7 +139,12 @@ function previousCardPokemonDialog(pokemonNumber, index) {
     }
 }
 
-/** Shows the previous Pokemon in normal browsing mode */
+/**
+ * Shows the previous Pokemon in normal browsing mode.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function previousCardSart(pokemonNumber) {
     if (pokemonNumber == 0) {
         pokemonNumber = pokemonsDetail.length - 1;
@@ -101,7 +154,12 @@ function previousCardSart(pokemonNumber) {
     showDialogContent(pokemonDialog(pokemonNumber));
 }
 
-/** Shows the previous Pokemon in search results */
+/**
+ * Shows the previous Pokemon within the search results.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function previousCardSearch(pokemonNumber) {
     let pokemonPreviousCardSearchIndex = allPokemonsFound.indexOf(pokemonNumber);
     if (pokemonPreviousCardSearchIndex <= 0) {
@@ -114,7 +172,13 @@ function previousCardSearch(pokemonNumber) {
     showDialogContent(searchPokemonDialog(pokemonNumber));
 }
 
-/** Navigates to the next Pokemon in the stats dialog (handles both normal and search mode) */
+/**
+ * Switches to the next Pokemon in the stats view.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @param {number} index Mode flag for normal view or search view.
+ * @returns {void}
+ */
 function nextCardStatsDialog(pokemonNumber, index) {
     if (index == 1) {
         nextCardStatsSart(pokemonNumber);
@@ -123,7 +187,12 @@ function nextCardStatsDialog(pokemonNumber, index) {
     }
 }
 
-/** Shows the next Pokemon stats in normal browsing mode */
+/**
+ * Shows the stats of the next Pokemon in normal browsing mode.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function nextCardStatsSart(pokemonNumber) {
     if (pokemonNumber >= pokemonsDetail.length - 1) {
         pokemonNumber = 0;
@@ -133,7 +202,12 @@ function nextCardStatsSart(pokemonNumber) {
     showDialogContent(statsDialog(pokemonNumber));
 }
 
-/** Shows the next Pokemon stats in search results */
+/**
+ * Shows the stats of the next Pokemon within the search results.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function nextCardStatsSearch(pokemonNumber) {
     let pokemonNextCardSearchIndex = allPokemonsFound.indexOf(pokemonNumber);
 
@@ -147,7 +221,13 @@ function nextCardStatsSearch(pokemonNumber) {
     showDialogContent(searchStatsDialog(pokemonNumber));
 }
 
-/** Navigates to the previous Pokemon in the stats dialog (handles both normal and search mode) */
+/**
+ * Switches to the previous Pokemon in the stats view.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @param {number} index Mode flag for normal view or search view.
+ * @returns {void}
+ */
 function previousCardStatsDialog(pokemonNumber, index) {
     if (index == 1) {
         previousCardStatsSart(pokemonNumber);
@@ -156,7 +236,12 @@ function previousCardStatsDialog(pokemonNumber, index) {
     }
 }
 
-/** Shows the previous Pokemon stats in normal browsing mode */
+/**
+ * Shows the stats of the previous Pokemon in normal browsing mode.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function previousCardStatsSart(pokemonNumber) {
     if (pokemonNumber == 0) {
         pokemonNumber = pokemonsDetail.length - 1;
@@ -166,7 +251,12 @@ function previousCardStatsSart(pokemonNumber) {
     showDialogContent(statsDialog(pokemonNumber));
 }
 
-/** Shows the previous Pokemon stats in search results */
+/**
+ * Shows the stats of the previous Pokemon within the search results.
+ *
+ * @param {number} pokemonNumber Current Pokemon index.
+ * @returns {void}
+ */
 function previousCardStatsSearch(pokemonNumber) {
     let pokemonPreviousCardSearchIndex = allPokemonsFound.indexOf(pokemonNumber);
     if (pokemonPreviousCardSearchIndex <= 0) {

@@ -1,4 +1,12 @@
-/** Generates HTML for a Pokemon card */
+/**
+ * Generates the HTML for a Pokemon card in the overview.
+ *
+ * @param {string} pokemonName Display name of the Pokemon.
+ * @param {number} pokemonNumber Index of the Pokemon in the data array.
+ * @param {string} pokemonFirstType Primary type of the Pokemon.
+ * @param {string} pokemonSecondType Image path for the secondary type or an empty string.
+ * @returns {string} HTML markup for the Pokemon card.
+ */
 function pokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecondType) {
     return `<div class = "card type-${pokemonFirstType} holographic-card" onclick =" opendialog('cardDetails'), showDialogContent(pokemonDialog(${pokemonNumber}))">
             <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
@@ -8,7 +16,13 @@ function pokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecond
             </div>`
 }
 
-/** Generates HTML for the detail view of a Pokemon in the dialog */
+/**
+ * Generates the HTML for the detail view of a Pokemon in the dialog.
+ *
+ * @param {number} pokemonNumber Index of the Pokemon in the data array.
+ * @param {number} [switchCardindex=1] Indicates the mode used for navigation.
+ * @returns {string} HTML markup for the dialog detail view.
+ */
 function pokemonDialog(pokemonNumber, switchCardindex = 1) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
@@ -46,7 +60,13 @@ function pokemonDialog(pokemonNumber, switchCardindex = 1) {
             </div>`
 }
 
-/** Generates HTML for the stats view of a Pokemon in the dialog */
+/**
+ * Generates the HTML for the stats view of a Pokemon in the dialog.
+ *
+ * @param {number} pokemonNumber Index of the Pokemon in the data array.
+ * @param {number} [switchCardindex=1] Indicates the mode used for navigation.
+ * @returns {string} HTML markup for the dialog stats view.
+ */
 function statsDialog(pokemonNumber, switchCardindex = 1) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
@@ -107,7 +127,15 @@ function statsDialog(pokemonNumber, switchCardindex = 1) {
             `
 }
 
-/** Generates HTML for a Pokemon card in search results */
+/**
+ * Generates the HTML for a Pokemon card within the search results.
+ *
+ * @param {string} pokemonName Display name of the Pokemon.
+ * @param {number} pokemonNumber Index of the Pokemon in the data array.
+ * @param {string} pokemonFirstType Primary type of the Pokemon.
+ * @param {string} pokemonSecondType Image path for the secondary type or an empty string.
+ * @returns {string} HTML markup for the search result card.
+ */
 function searchPokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemonSecondType) {
     return `<div class = "card type-${pokemonFirstType} holographic-card" onclick =" opendialog('cardDetails'), showDialogContent(searchPokemonDialog(${pokemonNumber}))">
             <img class= "pokemonImg" src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumber + 1}.svg">
@@ -117,7 +145,13 @@ function searchPokemonCard(pokemonName, pokemonNumber, pokemonFirstType, pokemon
             </div>`
 }
 
-/** Generates HTML for the detail view of a Pokemon from search results */
+/**
+ * Generates the HTML for the detail view of a search result in the dialog.
+ *
+ * @param {number} pokemonNumber Index of the Pokemon in the data array.
+ * @param {number} [switchCardindex=2] Indicates the search mode for navigation.
+ * @returns {string} HTML markup for the dialog detail view of a search result.
+ */
 function searchPokemonDialog(pokemonNumber, switchCardindex = 2) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
@@ -155,7 +189,13 @@ function searchPokemonDialog(pokemonNumber, switchCardindex = 2) {
             </div>`
 }
 
-/** Generates HTML for the stats view of a Pokemon from search results */
+/**
+ * Generates the HTML for the stats view of a search result in the dialog.
+ *
+ * @param {number} pokemonNumber Index of the Pokemon in the data array.
+ * @param {number} [switchCardindex=2] Indicates the search mode for navigation.
+ * @returns {string} HTML markup for the dialog stats view of a search result.
+ */
 function searchStatsDialog(pokemonNumber, switchCardindex = 2) {
     return `<div class="dialogCardDetails" onclick="event.stopPropagation()">
             <article class="dialogCardDetails">
