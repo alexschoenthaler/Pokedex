@@ -124,12 +124,53 @@ main {
 }
 
 footer {
-    height: 60px;
     background-color: rgb(100, 100, 100);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 12px 20px;
+}
+
+.footerContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.footerContent p {
+    margin: 0;
+}
+
+.footerCredits {
+    display: flex;
+    align-items: center;
+}
+
+.footerCredits summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+.footerCredits[open] summary {
+    padding-right: 10px;
+}
+
+.footerCreditsLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px 12px;
+}
+
+.footerCredits a {
+    color: white;
+}
+
+.footerCredits a:hover {
+    color: #d8ffd8;
 }
 
 @media(max-width: 1940px) {
@@ -175,5 +216,14 @@ footer {
 
     .form-control {
         width: 130px !important;
+    }
+
+    .footerContent {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footerCreditsLinks {
+        justify-content: flex-start;
     }
 }
